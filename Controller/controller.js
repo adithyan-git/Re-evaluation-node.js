@@ -310,7 +310,7 @@ exports.displayProducts = async(req,res,next)=>{
 exports.displayUsers = async (req,res,next)=>{
     const allUsers = await userSchema.find();
 
-  const registerdUser = allUsers.filter((user)=>user.role.includes('user')||user.role.includes('seller'))
+  const registerdUser = allUsers.filter((user)=>user.role !== "admin")
 
     if(!allUsers){
         res.status(404).json({
